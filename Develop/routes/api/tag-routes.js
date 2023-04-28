@@ -10,8 +10,8 @@ router.get('/', (req, res) => {
     {include: [
       {model: Product, through: ProductTag}
     ]}
-  ).then((TagData) => {
-    res.json(TagData);
+  ).then((productTagData) => {
+    res.json(productTagData);
   });
 });
 
@@ -22,8 +22,8 @@ router.get('/:id', (req, res) => {
     include: [
       { model: Product, through: ProductTag }
     ]
-  }).then((TagData) => {
-    res.json(TagData);
+  }).then((productTagData) => {
+    res.json(productTagData);
   });
 });
 
@@ -57,7 +57,7 @@ router.delete('/:id', (req, res) => {
   // delete on tag by its `id` value
   Tag.destroy({
     where: {
-      tag_id: req.params.id,
+      id: req.params.id,
     },
   })
     .then((deletedTag) => {
